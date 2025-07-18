@@ -6,9 +6,6 @@ export class Usuarios {
     @PrimaryGeneratedColumn("increment")
     id: number
 
-    @Column()
-    name: string
-
     @Column({unique:true})
     email: string
 
