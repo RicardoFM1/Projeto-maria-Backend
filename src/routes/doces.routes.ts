@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { criarDoceController } from "../controllers/doces.controller";
+import { criarDoceController, getAllDocesControllers } from "../controllers/doces.controllers";
 
 
 export const docesRoutes:Router = Router()
 
-docesRoutes.get("")
+docesRoutes.get("", getAllDocesControllers)
 docesRoutes.post("", criarDoceController)

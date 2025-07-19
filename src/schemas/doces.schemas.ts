@@ -6,9 +6,11 @@ export const CriarDoce = z.object({
     preco_de_venda: z.number()
 }
 )
-export const ReturnDoces = CriarDoce.extend({
+export const ReturnDoce = CriarDoce.extend({
     id:z.number()
 })
+export const ReturnAllDoces = ReturnDoce.array()
 
 export type iCriarDoce = z.infer<typeof CriarDoce>
-export type iReturnDoce = z.infer<typeof ReturnDoces>
+export type iReturnDoce = z.infer<typeof ReturnDoce>
+export type iReturnAllDoces = z.infer<typeof ReturnAllDoces>
