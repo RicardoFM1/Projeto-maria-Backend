@@ -1,5 +1,5 @@
-import { BeforeInsert, BeforeUpdate, Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
-import {getRounds,hashSync} from "bcryptjs"
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+
 
 @Entity("doces")
 export class Doces {
