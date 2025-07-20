@@ -13,11 +13,13 @@ export const criarVendaSchema = z.object({
 
 })
 export const returnVendaSchema = z.object({
-    id:z.number(),
+    
     produto: ReturnDoceSchema,
+    quantidade:z.number(),
     total_vendido: z.number(),
     total_lucro: z.number(),
-    hora_da_venda: z.string()
+    hora_da_venda: z.string(),
+    id:z.number()
 })
 
 export const returnAllVendasSchema = returnVendaSchema.array()
