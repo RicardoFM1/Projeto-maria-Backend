@@ -17,7 +17,7 @@ export const getAllDocesControllers = async(req:Request, res:Response):Promise<R
 }
 export const deleteDocesController = async(req:Request, res:Response):Promise<Response> => {
     const docesId:string = req.params.id
-    await deleteDocesService(docesId)
+    await CreateDoceService(docesId)
 
     return res.status(204).send()
 }

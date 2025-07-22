@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { iCriarVenda, iReturnVenda } from "../schemas/vendas.schemas";
 import { CreateVendaService } from "../services/createVenda.service";
 import { GetAllVendasService } from "../services/getAllVendas.service";
+import { deleteVendasService } from "../services/deleteVendas.service";
 
 
 export const CreateVendaController = async(req:Request, res:Response):Promise<Response> =>{
