@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { iCriarDoce, iReturnDoce } from "../schemas/doces.schemas";
-import { CreateDoceService } from "../services/CreateDoce.service";
+import { CreateDoceService } from "../services/createDoce.service";
 import { getAllDocesService } from "../services/getAllDoces.service";
 
 
