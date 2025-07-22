@@ -10,6 +10,5 @@ export const ReturnDespesaSchema = CreateDespesaSchema.extend({
     id: z.number()
 })
 export const ReturnAllDespesasSchemas = ReturnDespesaSchema.array() 
-
 export type iCreateDespesa = z.infer<typeof CreateDespesaSchema>
 export type iReturnDespesa = z.infer<typeof ReturnDespesaSchema>

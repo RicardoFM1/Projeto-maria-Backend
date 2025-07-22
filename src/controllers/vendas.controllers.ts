@@ -16,3 +16,9 @@ export const CreateVendaController = async(req:Request, res:Response):Promise<Re
 
         return res.status(200).json(venda)
     }
+    export const deleteVendasController = async(req:Request, res:Response):Promise<Response> => {
+        const vendasId:string = req.params.id
+        await deleteVendasService(vendasId)
+    
+        return res.status(204).send()
+    }

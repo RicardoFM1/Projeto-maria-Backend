@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { CreateDespesaService } from "../services/createDespesa.service";
 import { GetAllDespesasService } from "../services/getAllDespesas.service";
+import { deleteDespesaService } from "../services/deleteDespesa.service";
 
 
 export const CreateDespesaController = async(req:Request, res:Response):Promise<Response> =>{
