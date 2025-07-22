@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { iCriarDoce, iReturnDoce } from "../schemas/doces.schemas";
 import { CreateDoceService } from "../services/createDoce.service";
 import { getAllDocesService } from "../services/getAllDoces.service";
+import { deleteDoceService } from "../services/deleteDoces.service";
 
 
 export const criarDoceController = async(req:Request, res: Response):Promise<Response> =>{
@@ -17,7 +18,7 @@ export const getAllDocesControllers = async(req:Request, res:Response):Promise<R
 }
 export const deleteDocesController = async(req:Request, res:Response):Promise<Response> => {
     const docesId:string = req.params.id
-    await CreateDoceService(docesId)
+    await deleteDoceService(docesId)
 
     return res.status(204).send()
 }
