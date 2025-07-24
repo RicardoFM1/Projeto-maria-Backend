@@ -4,6 +4,7 @@ import { CreateDoceService } from "../services/createDoce.service";
 import { getAllDocesService } from "../services/getAllDoces.service";
 import { deleteDoceService } from "../services/deleteDoces.service";
 import { iReturnDespesa } from "../schemas/despesas.schemas";
+import { AtualizarDoceService } from "../services/atualizarDoce.service";
 
 
 export const criarDoceController = async(req:Request, res: Response):Promise<Response> =>{
@@ -17,15 +18,16 @@ export const getAllDocesControllers = async(req:Request, res:Response):Promise<R
     
     return res.status(200).json(doces)
 }
-export const deleteDocesController = async(req:Request, res:Response):Promise<Response> => {
+export const DeleteDocesController = async(req:Request, res:Response):Promise<Response> => {
     const docesId:string = req.params.id
     await deleteDoceService(docesId)
 
     return res.status(204).send()
 }
-export const AtualizarDocesController = async(req:Request, res:Response):Promise<Response> =>{
+export const AtualizarDoceController = async(req:Request, res:Response):Promise<Response> =>{
     const doceData = req.body
     const doceId = req.params.id
 
     const doce:iReturnDoce = await AtualizarDoceService(doceData, doceId)
+    return res.status(200).json(doce)
 }

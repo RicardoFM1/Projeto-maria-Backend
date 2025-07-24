@@ -3,6 +3,7 @@ import { iCriarVenda, iReturnVenda } from "../schemas/vendas.schemas";
 import { CreateVendaService } from "../services/createVenda.service";
 import { GetAllVendasService } from "../services/getAllVendas.service";
 import { deleteVendasService } from "../services/deleteVendas.service";
+import { AtualizarVendaService } from "../services/atualizarVenda.service";
 
 
 export const CreateVendaController = async(req:Request, res:Response):Promise<Response> =>{
@@ -17,9 +18,16 @@ export const CreateVendaController = async(req:Request, res:Response):Promise<Re
 
         return res.status(200).json(venda)
     }
-    export const deleteVendasController = async(req:Request, res:Response):Promise<Response> => {
+    export const DeleteVendasController = async(req:Request, res:Response):Promise<Response> => {
         const vendasId:string = req.params.id
         await deleteVendasService(vendasId)
-    
+
         return res.status(204).send()
+    }
+    export const AtualizarVendaController = async(req:Request, res:Response):Promise<Response> =>{
+        const vendaData = req.body
+        const vendaId = req.params.id
+
+        const venda:iReturnVenda = await AtualizarVendaService(vendaData, vendaId)
+        return res.status(200).json(venda)
     }
