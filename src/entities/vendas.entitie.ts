@@ -7,9 +7,8 @@ export class Vendas {
     @PrimaryGeneratedColumn("increment")
     id: number
 
-    @ManyToOne(()=>Doces, {nullable: true, onDelete: "SET NULL"})
-    @JoinColumn({name:"produto"})
-    produto:Doces | null
+    @ManyToOne(()=>Doces)
+    produto:Doces
 
     @Column()
     quantidade: number

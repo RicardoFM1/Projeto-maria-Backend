@@ -2,10 +2,9 @@ import { Request, Response } from "express";
 import { iCriarDoce, iReturnDoce } from "../schemas/doces.schemas";
 import { CreateDoceService } from "../services/CreateDoce.service";
 import { getAllDocesService } from "../services/getAllDoces.service";
-// import { deleteDoceService } from "../services/deleteDoces.service";
-import { iReturnDespesa } from "../schemas/despesas.schemas";
 import { AtualizarDoceService } from "../services/atualizarDoce.service";
 import { GetDocesByIdService } from "../services/getDoceById.service";
+// import { deleteDoceService } from "../services/deleteDoces.service"; FAZER PATCH AO INVÉS DE DELETE!
 
 
 export const criarDoceController = async(req:Request, res: Response):Promise<Response> =>{
@@ -31,8 +30,8 @@ export const GetDocesByIdController = async(req:Request, res:Response):Promise<R
 //     const docesId:string = req.params.id
 //     await deleteDoceService(docesId)
 
-//     return res.status(204).send() FAZER PATCH AO INVÉS DE DELETE!
-// }
+//     return res.status(204).send() 
+// } FAZER PATCH AO INVÉS DE DELETE!
 export const AtualizarDoceController = async(req:Request, res:Response):Promise<Response> =>{
     const doceData = req.body
     const doceId = req.params.id
