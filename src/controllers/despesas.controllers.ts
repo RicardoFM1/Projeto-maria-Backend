@@ -4,6 +4,7 @@ import { GetAllDespesasService } from "../services/getAllDespesas.service";
 import { deleteDespesaService } from "../services/deleteDespesa.service";
 import { AtualizarDespesaService } from "../services/atualizarDespesa.service";
 import { iReturnDespesa } from "../schemas/despesas.schemas";
+import { GetDespesasByIdService } from "../services/getDespesaById.service";
 
 
 export const CreateDespesaController = async(req:Request, res:Response):Promise<Response> =>{
@@ -17,6 +18,12 @@ export const GetAllDespesasController = async(req:Request, res:Response):Promise
     const despesas = await GetAllDespesasService()
     
     return res.status(200).json(despesas)
+}
+export const GetDespesasByIdController = async(req:Request, res:Response):Promise<Response> => {
+    const despesaId = req.params.id
+    const despesa = await GetDespesasByIdService(despesaId)
+
+    return res.status(200).json(despesa)
 }
 export const deleteDespesasController = async(req:Request, res:Response):Promise<Response> => {
     const despesaId:string = req.params.id

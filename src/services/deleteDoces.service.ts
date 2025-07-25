@@ -11,11 +11,11 @@ export const deleteDoceService = async(doceId:string):Promise<void> => {
     {
         where: {
             id: parseInt(doceId)
-        }
+        },
     }
  )
  if(!doceFind){
-    throw new AppError("Despesa não encontrada!")
+    throw new AppError("Doce não encontrado!")
  }
  await doceRepository.remove(doceFind)
 }

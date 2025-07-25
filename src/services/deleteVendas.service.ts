@@ -15,7 +15,7 @@ export const deleteVendasService = async(vendasId:string):Promise<void> => {
     }
  )
  if(!vendasFind){
-    throw new AppError("Despesa não encontrada!")
+    throw new AppError("Venda não encontrada!")
  }
  await vendasRepository.remove(vendasFind)
 }
