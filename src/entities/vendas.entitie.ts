@@ -1,5 +1,5 @@
-import { BeforeInsert, BeforeUpdate, Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
-import {getRounds,hashSync} from "bcryptjs"
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+
 import { Doces } from "./doces.entitie";
 
 @Entity("vendas")
@@ -7,8 +7,9 @@ export class Vendas {
     @PrimaryGeneratedColumn("increment")
     id: number
 
-    @ManyToOne(()=>Doces)
-    produto:Doces
+    @ManyToOne(()=>Doces, {nullable: true, onDelete: "SET NULL"})
+    @JoinColumn({name:"produto"})
+    produto:Doces | null
 
     @Column()
     quantidade: number

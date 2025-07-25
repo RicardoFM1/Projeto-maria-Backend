@@ -26,7 +26,7 @@ export const AtualizarVendaService = async(vendaData:iCriarVenda, vendaId:string
     const produtoFind:Doces|null = await doceRepository.findOne(
         {
             where:{
-                id: vendaFind.produto.id
+                id: vendaFind.produto ? vendaFind.produto.id : 0
             }
         }
     )

@@ -14,7 +14,7 @@ export const criarVendaSchema = z.object({
 })
 export const returnVendaSchema = z.object({
     
-    produto: ReturnDoceSchema,
+    produto: ReturnDoceSchema.nullable(),
     quantidade:z.number(),
     total_vendido: z.number(),
     total_lucro: z.number(),
