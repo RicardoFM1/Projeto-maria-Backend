@@ -1,17 +1,30 @@
 import {z} from "zod"
 import { ReturnDoceSchema } from "./doces.schemas"
+import { DeepPartial } from "typeorm"
+import { Vendas } from "../entities/vendas.entitie"
 
 export const criarVendaSchema = z.object({
-    produto: ReturnDoceSchema.pick({id:true}),
-    quantidade:z.number()
-    // no front fzr um input que dê pra escolher qual produto pegar, e não
+    produto: z.string().min(1, "Precisa ser preenchido"),
+    quantidade: z.preprocess(
+    (val) => {
+      // transforma string vazia em undefined
+      if (val === "" || val === null) return undefined;
+      if (typeof val === "string" || typeof val === "number") return Number(val);
+      return val;
+    },
+    z.number({
+      required_error: "Precisa ser preenchido",
+      invalid_type_error: "Precisa ser um número válido",
+    })
+  )
+});
+        // no front fzr um input que dê pra escolher qual produto pegar, e não
     // escrever ele em si, mas caso escrever, aparecer a sugestão e dai pegar o id pro banco
     // fazer a referencia, já que por nome não da.    
    
     
    
 
-})
 export const returnVendaSchema = z.object({
     produto: ReturnDoceSchema,
     quantidade:z.number(),
@@ -28,6 +41,14 @@ export const returnTotalVendasSchema = z.object({
     total:z.number(),
     total_qtd:z.number()
 })
+
+
+    const newSale: DeepPartial<Vendas> = {
+      total_vendido: 100,
+      total_lucro: 20,
+      produto: { id: 1 }, 
+      quantidade: 5
+    };
 
 export type iReturnTotalVendas = z.infer<typeof returnTotalVendasSchema>
 export type iReturnAllVendas = z.infer<typeof returnAllVendasSchema>

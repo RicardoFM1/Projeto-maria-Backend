@@ -2,8 +2,8 @@ import z, { number } from "zod";
 
 
 export const CreateDespesaSchema = z.object({
-    name: z.string(),
-    valor: z.number()
+    name: z.string().min(1, "Precisa ser preenchido"),
+    valor: z.number().min(1, "Precisa ser preenchido")
 })
 
 export const ReturnDespesaSchema = CreateDespesaSchema.extend({

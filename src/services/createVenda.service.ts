@@ -12,7 +12,7 @@ export const CreateVendaService = async(vendaData:iCriarVenda):Promise<iReturnVe
     const produtoFind = await produtoRepository.findOne(
         {
            where:{
-           id: vendaData.produto.id
+           name: vendaData.produto
            }
         }
     ) 
@@ -25,7 +25,8 @@ export const CreateVendaService = async(vendaData:iCriarVenda):Promise<iReturnVe
     const createVenda = vendaRepository.create({
         ...vendaData,
         total_lucro: valorLucro,
-        total_vendido: valorTotalProduto
+        total_vendido: valorTotalProduto,
+        produto: {id: produtoFind.id}
     }) // isso cria a venda indo no repositório(DB)
     await vendaRepository.save(createVenda) // isso aqui salva a criação
     const venda:iReturnVenda = returnVendaSchema.parse({...createVenda, produto:produtoFind}) // isso só valida e retorna no json dps no controller
