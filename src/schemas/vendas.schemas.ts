@@ -3,20 +3,15 @@ import { ReturnDoceSchema } from "./doces.schemas"
 import { DeepPartial } from "typeorm"
 import { Vendas } from "../entities/vendas.entitie"
 
+
+
 export const criarVendaSchema = z.object({
-    produto: z.string().min(1, "Precisa ser preenchido"),
-    quantidade: z.preprocess(
-    (val) => {
-      // transforma string vazia em undefined
-      if (val === "" || val === null) return undefined;
-      if (typeof val === "string" || typeof val === "number") return Number(val);
-      return val;
-    },
-    z.number({
+    produto: z.string().min(1, "Precisa ser preenchido").toLowerCase(),
+    quantidade: z.coerce.number(({
       required_error: "Precisa ser preenchido",
-      invalid_type_error: "Precisa ser um número válido",
-    })
-  )
+      invalid_type_error: "Precisa ser um número válido"
+    }))
+  
 });
         // no front fzr um input que dê pra escolher qual produto pegar, e não
     // escrever ele em si, mas caso escrever, aparecer a sugestão e dai pegar o id pro banco
