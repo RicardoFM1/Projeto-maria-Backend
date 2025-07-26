@@ -2,6 +2,9 @@ import { Request, Response } from "express";
 import { iCriarDoce, iReturnDoce } from "../schemas/doces.schemas";
 import { CreateDoceService } from "../services/CreateDoce.service";
 import { getAllDocesService } from "../services/getAllDoces.service";
+import { AtualizarDoceService } from "../services/atualizarDoce.service";
+import { GetDocesByIdService } from "../services/getDoceById.service";
+// import { deleteDoceService } from "../services/deleteDoces.service"; FAZER PATCH AO INVÉS DE DELETE!
 
 
 export const criarDoceController = async(req:Request, res: Response):Promise<Response> =>{
@@ -14,4 +17,25 @@ export const getAllDocesControllers = async(req:Request, res:Response):Promise<R
     const doces = await getAllDocesService()
     
     return res.status(200).json(doces)
+}
+export const GetDocesByIdController = async(req:Request, res:Response):Promise<Response> =>{
+    const doceId = req.params.id
+
+    const doce = await GetDocesByIdService(doceId)
+
+    return res.status(200).json(doce)
+}
+
+// export const DeleteDocesController = async(req:Request, res:Response):Promise<Response> => {
+//     const docesId:string = req.params.id
+//     await deleteDoceService(docesId)
+
+//     return res.status(204).send() 
+// } FAZER PATCH AO INVÉS DE DELETE!
+export const AtualizarDoceController = async(req:Request, res:Response):Promise<Response> =>{
+    const doceData = req.body
+    const doceId = req.params.id
+
+    const doce:iReturnDoce = await AtualizarDoceService(doceData, doceId)
+    return res.status(200).json(doce)
 }
