@@ -7,10 +7,9 @@ import { Vendas } from "../entities/vendas.entitie"
 
 export const criarVendaSchema = z.object({
     produto: z.string().min(1, "Precisa ser preenchido").toLowerCase(),
-    quantidade: z.coerce.number(({
-      required_error: "Precisa ser preenchido",
-      invalid_type_error: "Precisa ser um número válido"
-    }))
+    quantidade:z.number().min(1, "Precisa ser preenchido ou um número válido").positive(
+        "Precisa ser maior que 0"
+    )
   
 });
         // no front fzr um input que dê pra escolher qual produto pegar, e não
