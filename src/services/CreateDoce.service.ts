@@ -15,7 +15,7 @@ export const CreateDoceService = async(doceData:iCriarDoce):Promise<iReturnDoce>
             
         })
      if(findDoce){
-            throw new AppError("Doce já cadastrado",409)
+            throw new AppError("Produto já cadastrado", 409)
         }
     const createDoce = doceRepository.create(doceData)
     await doceRepository.save(createDoce)
