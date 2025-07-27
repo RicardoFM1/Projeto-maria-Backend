@@ -2,8 +2,8 @@ import z, { number } from "zod";
 
 
 export const CreateDespesaSchema = z.object({
-    name: z.string(),
-    valor: z.number()
+    name: z.string().min(1, "Precisa ser preenchido").toLowerCase(),
+    valor: z.number().min(1, "Precisa ser preenchido ou um número válido").positive("Precisa ser maior que 0")  
 })
 
 export const ReturnDespesaSchema = CreateDespesaSchema.extend({

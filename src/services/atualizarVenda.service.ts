@@ -35,7 +35,8 @@ export const AtualizarVendaService = async(vendaData:iCriarVenda, vendaId:string
     }
     const vendaPatch = vendaRepository.create({
         ...vendaFind,
-        ...vendaData
+        ...vendaData,
+        produto:produtoFind
     })
     await vendaRepository.save(vendaPatch)
     // vendaFind?.produto.id

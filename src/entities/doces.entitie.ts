@@ -6,9 +6,9 @@ export class Doces {
     @PrimaryGeneratedColumn("increment")
     id: number
 
-    @Column()
-    name: string
-
+    @Column({unique: true})
+    name: string 
+    
     @Column()
     preco_de_custo: number
 
