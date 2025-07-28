@@ -36,8 +36,14 @@ export const returnTotalVendasSchema = z.object({
     total_qtd:z.number()
 })
 
+export const returnResumoSchema = z.object({
+    totalProdutosVendidos: z.number(),
+    faturamentoTotal: z.number(),
+    lucroTotal: z.number()
+})
 
 export type iReturnTotalVendas = z.infer<typeof returnTotalVendasSchema>
 export type iReturnAllVendas = z.infer<typeof returnAllVendasSchema>
 export type iReturnVenda = z.infer<typeof returnVendaSchema>
 export type iCriarVenda = z.infer<typeof criarVendaSchema>
+export type iResumo = z.infer<typeof returnResumoSchema>
