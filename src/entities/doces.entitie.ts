@@ -6,7 +6,7 @@ export class Doces {
     @PrimaryGeneratedColumn("increment")
     id: number
 
-    @Column({unique: true})
+    @Column()
     name: string 
     
     @Column()
