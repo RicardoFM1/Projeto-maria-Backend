@@ -19,5 +19,9 @@ export const GetAllVendasService = async():Promise<iReturnAllVendas> => {
         throw new AppError("Nenhuma venda cadastrada ainda")
     }
     const vendas = returnAllVendasSchema.parse(vendasFind)
-    return vendas
+    return vendas.map((venda) => ({
+        ...venda,
+        total_vendido: venda.total_vendido / 100,
+        total_lucro: venda.total_lucro / 100
+    }))
 }
