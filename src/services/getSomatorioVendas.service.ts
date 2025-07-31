@@ -36,7 +36,7 @@ export const GetSomatorioVendasService = async (): Promise<iResumo> => {
     acc.totalProdutosVendidos += venda.quantidade;
     acc.faturamentoTotal += venda.total_vendido / 100;
     acc.lucroTotal += venda.total_lucro / 100;
-    return acc;
+    return acc; 
     },
     {
       totalProdutosVendidos: 0,

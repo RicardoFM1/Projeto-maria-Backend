@@ -58,7 +58,7 @@ export const DeleteVendasController = async (
   const vendasId: string = req.params.id;
   await deleteVendasService(vendasId);
 
-  return res.status(204).send();
+  return res.status(200).json("Venda deletada com sucesso");
 };
 export const AtualizarVendaController = async (
   req: Request,
