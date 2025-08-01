@@ -9,6 +9,8 @@ export const CriarDoceSchema = z.object({
 export const ReturnDoceSchema = CriarDoceSchema.extend({
     id: z.number()
 })
+
+
 export const ReturnAllDocesSchema = ReturnDoceSchema.array()
 
 export type iCriarDoce = z.infer<typeof CriarDoceSchema>

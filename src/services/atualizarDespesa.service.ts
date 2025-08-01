@@ -19,10 +19,7 @@ export const AtualizarDespesaService = async( despesaData:iCreateDespesa,despesa
     if(!despesaFind){
         throw new AppError("Não foi possível encontrar nenhuma despesa")
     }
-    const despesaPatch = despesaRepository.create({
-        ...despesaFind,
-        ...despesaData
-    })
+    const despesaPatch = despesaRepository.merge(despesaFind, despesaData)
     await despesaRepository.save(despesaPatch)
     const despesa = ReturnDespesaSchema.parse(despesaPatch)
     return despesa
