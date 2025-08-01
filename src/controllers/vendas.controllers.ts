@@ -6,7 +6,8 @@ import { deleteVendasService } from "../services/deleteVendas.service";
 import { AtualizarVendaService } from "../services/atualizarVenda.service";
 import { GetVendaByIdService } from "../services/getVendaById.service";
 import { GetProdutoVendaByIdService } from "../services/getProdutoVendaById.service";
-import { GetSomatorioVendasService } from "../services/getSomatorioVendas.service";
+import { GetResumoVendasService } from "../services/getResumoVendas.service";
+import { GetResumoPorProdutoService } from "../services/getResumoVendasPorProduto.service";
 
 export const CreateVendaController = async (
   req: Request,
@@ -29,10 +30,18 @@ export const getResumoVendasController = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  const resumo = await GetSomatorioVendasService();
+  const resumo = await GetResumoVendasService();
 
   return res.status(200).json(resumo);
 };
+
+export const GetResumoPorProdutoController = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const resumo = await GetResumoPorProdutoService(id);
+  return res.status(200).json(resumo);
+};
+
+
 export const GetVendaByIdController = async (
   req: Request,
   res: Response

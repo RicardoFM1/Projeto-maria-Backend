@@ -9,7 +9,7 @@ import {
 } from "../schemas/vendas.schemas";
 import { AppError } from "../errors";
 
-export const GetSomatorioVendasService = async (): Promise<iResumo> => {
+export const GetResumoVendasService = async (): Promise<iResumo> => {
   const vendasRepository: Repository<Vendas> =
     AppDataSource.getRepository(Vendas);
   const vendasFind = await vendasRepository.find({
