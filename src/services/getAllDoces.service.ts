@@ -13,5 +13,9 @@ export const getAllDocesService = async():Promise<iReturnAllDoces> => {
             throw new AppError("Nenhum doce cadastrado ainda")
         }
     const doces = ReturnAllDocesSchema.parse(findDoces)
-    return doces
+    return doces.map((doce) => ({
+        ...doce,
+        preco_de_custo: doce.preco_de_custo / 100,
+        preco_de_venda: doce.preco_de_venda / 100,
+    }))
 }
