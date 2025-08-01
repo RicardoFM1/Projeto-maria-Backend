@@ -29,7 +29,7 @@ export const deleteDespesasController = async(req:Request, res:Response):Promise
     const despesaId:string = req.params.id
     await deleteDespesaService(despesaId)
 
-    return res.status(204).send()
+    return res.status(200).json("Despesa deletada com sucesso")
 }
 export const AtualizarDespesasController = async(req:Request, res: Response):Promise<Response> => {
     const despesaData = req.body

@@ -24,7 +24,7 @@ export const returnVendaSchema = z.object({
     quantidade:z.number(),
     total_vendido: z.number(),
     total_lucro: z.number(),
-    hora_da_venda: z.string(),
+    data_da_venda: z.string(),
     id:z.number()
 })
 
@@ -36,15 +36,14 @@ export const returnTotalVendasSchema = z.object({
     total_qtd:z.number()
 })
 
-
-    const newSale: DeepPartial<Vendas> = {
-      total_vendido: 100,
-      total_lucro: 20,
-      produto: { id: 1 }, 
-      quantidade: 5
-    };
+export const returnResumoSchema = z.object({
+    totalProdutosVendidos: z.number(),
+    faturamentoTotal: z.number(),
+    lucroTotal: z.number()
+})
 
 export type iReturnTotalVendas = z.infer<typeof returnTotalVendasSchema>
 export type iReturnAllVendas = z.infer<typeof returnAllVendasSchema>
 export type iReturnVenda = z.infer<typeof returnVendaSchema>
 export type iCriarVenda = z.infer<typeof criarVendaSchema>
+export type iResumo = z.infer<typeof returnResumoSchema>

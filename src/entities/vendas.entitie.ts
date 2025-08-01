@@ -20,6 +20,6 @@ export class Vendas {
     total_lucro: number
 
     @CreateDateColumn({type:"date"})
-    hora_da_venda: string
+    data_da_venda: string
     
 }

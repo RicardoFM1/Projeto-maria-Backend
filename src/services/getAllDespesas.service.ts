@@ -4,6 +4,7 @@ import { AppDataSource } from "../data-source"
 import { returnAllVendasSchema } from "../schemas/vendas.schemas"
 import { ReturnAllDespesasSchemas } from "../schemas/despesas.schemas"
 import { AppError } from "../errors"
+import { validateTokenMiddleware } from "../middleware/validateToken.middleware"
 
 export const GetAllDespesasService =async () => {
     const despesaRepository:Repository<Despesas> = AppDataSource.getRepository(Despesas)
@@ -13,5 +14,8 @@ export const GetAllDespesasService =async () => {
         throw new AppError("Nenhuma despesa cadastrada ainda")
     }
     const despesas = ReturnAllDespesasSchemas.parse(despesasFind)
-    return despesas
+    return despesas.map((despesa) => ({
+        ...despesa,
+        valor: despesa.valor / 100
+    }))
 }
